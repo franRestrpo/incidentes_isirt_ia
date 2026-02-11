@@ -1,0 +1,49 @@
+# Framework y Servidor
+fastapi==0.116.1
+uvicorn[standard]==0.35.0
+
+# Testing y Calidad de Código
+pytest==8.4.2
+pytest-asyncio==1.2.0
+pytest-cov==7.0.0
+pytest-html==4.1.1
+pytest-xdist==3.8.0
+black==25.1.0
+flake8==7.3.0
+mypy==1.18.1
+pre-commit==4.3.0
+
+# Base de Datos y ORM
+SQLAlchemy==2.0.43
+psycopg2-binary==2.9.10
+alembic==1.16.4
+
+# IA y Orquestación (LangChain)
+langchain-core==0.3.74
+langchain-community==0.3.27
+langchain-openai==0.3.31
+langchain-google-genai==2.1.9
+langchain-ollama==0.3.7
+langchain-groq==0.3.7
+faiss-cpu==1.12.0
+tiktoken== 0.11.0
+pypdf==6.0.0
+
+# Validación, Configuración y Seguridad
+pydantic==2.11.9
+pydantic-settings==2.10.1
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+email-validator==2.2.0
+itsdangerous==2.2.0
+
+# Utilidades
+python-multipart==0.0.20
+httpx==0.28.1
+python-dotenv==1.1.1
+typer==0.12.3 # Para la CLI de manage.py
+unstructured[md]==0.18.14
+python-magic==0.4.27
+lark==1.2.2
+jq==1.10.0

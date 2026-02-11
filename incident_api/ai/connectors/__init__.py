@@ -1,0 +1,1 @@
+"""Módulo de conectores de IA (ahora centralizado en llm_factory)."""
