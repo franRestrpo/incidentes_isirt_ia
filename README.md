@@ -205,7 +205,7 @@ Este proyecto está bajo la Licencia **GNU General Public License v3.0 (GPLv3)**
 **Fran Estuwar Restrepo Cuellar**  
 Cybersecurity Professional | GRC | DevSecOps
 
-- [LinkedIn](www.linkedin.com/in/fran-estuwar-restrepo-cuellar-a96096288)
+- [LinkedIn](https://www.linkedin.com/in/fran-estuwar-restrepo-cuellar-a96096288/)
 - 📧 Email: fran.restrepo@syntalix.net
 
 ---
