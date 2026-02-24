@@ -163,7 +163,18 @@ Para instrucciones detalladas sobre instalación local, configuración avanzada 
 
 ---
 
-## 📚 Documentación
+## 🔒 Seguridad y Buenas Prácticas
+
+Para garantizar la integridad y confidencialidad de los datos de incidentes, el proyecto implementa:
+
+- **Validación de Esquemas:** Uso exhaustivo de Pydantic en el backend para asegurar que solo datos con el formato correcto sean procesados, mitigando ataques de inyección.
+- **CORS Policy:** Configuración estricta de Cross-Origin Resource Sharing para permitir únicamente peticiones desde el origen del frontend.
+- **Security Headers:** Implementación de cabeceras de seguridad para mitigar ataques de XSS y Clickjacking.
+- **Environment Isolation:** Separación total de secretos mediante variables de entorno, evitando el hardcoding de credenciales.
+
+---
+
+##  Documentación
 
 - [Arquitectura del Sistema](docs/ARQUITECTURA_SISTEMA.md)
 - [Esquema de Base de Datos](docs/DOCUMENTO_BASE_DE_DATOS.md)
@@ -194,8 +205,8 @@ Este proyecto está bajo la Licencia **GNU General Public License v3.0 (GPLv3)**
 **Fran Estuwar Restrepo Cuellar**  
 Cybersecurity Professional | GRC | DevSecOps
 
-- [LinkedIn](https://www.linkedin.com/in/franrestrepo/)
-- 📧 Email: franrestrepo@example.com
+- [LinkedIn](www.linkedin.com/in/fran-estuwar-restrepo-cuellar-a96096288)
+- 📧 Email: fran.restrepo@syntalix.net
 
 ---
 *Desarrollado para equipos de respuesta a incidentes que buscan potenciar su eficiencia mediante IA.*
