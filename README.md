@@ -40,6 +40,105 @@ El proyecto sigue una arquitectura desacoplada para garantizar escalabilidad y s
 - **AI Engine:** Integración con modelos de lenguaje para el análisis sintáctico de los reportes y sugerencia de planes de remediación.
 - **Database:** Persistencia de incidentes con trazabilidad de auditoría (quién, cuándo y qué se modificó).
 
+### 📊 Diagrama de Arquitectura y Flujo de Incidentes
+
+```mermaid
+flowchart TB
+    subgraph Usuarios["👥 Usuarios"]
+        A[Analista de Seguridad]
+        B[Miembro IRT]
+        C[Administrador]
+    end
+
+    subgraph Frontend["🖥️ Frontend (React + TypeScript)"]
+        D[Dashboard de Incidentes]
+        E[Formulario de Reporte]
+        F[Chatbot IA]
+    end
+
+    subgraph Backend["⚙️ Backend (FastAPI)"]
+        G[API REST /api/v1/*]
+        H[Servicios de Negocio]
+        I[Autenticación JWT]
+    end
+
+    subgraph AI_Engine["🤖 Motor de IA"]
+        J[RAG Processor]
+        K[FAISS Vector Store]
+        L[Gemini / OpenAI / Ollama]
+    end
+
+    subgraph Data["💾 Capa de Datos"]
+        M[(PostgreSQL)]
+        N[Audit Log]
+        O[Knowledge Base]
+    end
+
+    A --> D
+    B --> D
+    C --> D
+    
+    D --> G
+    E --> G
+    F --> G
+    
+    G --> H
+    G --> I
+    
+    H --> J
+    J --> K
+    J --> L
+    K --> O
+    
+    H --> M
+    H --> N
+    
+    I --> M
+```
+
+### 🔄 Flujo de Incidentes con IA
+
+```mermaid
+sequenceDiagram
+    participant U as 👤 Usuario
+    participant F as 🖥️ Frontend
+    participant B as ⚙️ Backend API
+    participant RAG as 🤖 RAG Engine
+    participant AI as 🧠 LLM (Gemini/OpenAI)
+    participant DB as 💾 PostgreSQL
+
+    Note over U,DB: 1. Reporte de Incidente
+    U->>F: Describe incidente
+    F->>B: POST /incidents/suggestions
+    B->>RAG: Buscar playbooks similares
+    RAG->>DB: Consultar Knowledge Base
+    DB-->>RAG: Documentos relevantes
+    RAG->>AI: Prompt enriquecido + contexto
+    AI-->>B: Sugerencias (categoría, severidad, recomendaciones)
+    B-->>F: JSON con sugerencias
+    F-->>U: Muestra sugerencias para revisión
+    
+    Note over U,DB: 2. Creación del Incidente
+    U->>F: Confirma/Modifica datos
+    F->>B: POST /incidents/
+    B->>DB: Crear incidente
+    B->>DB: Registrar en Audit Log
+    DB-->>B: Incidente creado
+    B-->>F: Confirmación
+    F-->>U: Incidente registrado
+
+    Note over U,DB: 3. Asistencia con Chatbot
+    U->>F: Consulta sobre incidente
+    F->>B: POST /chatbot/ask
+    B->>DB: Recuperar historial
+    B->>RAG: Buscar contexto relevante
+    RAG->>AI: Prompt con memoria
+    AI-->>B: Respuesta contextualizada
+    B->>DB: Guardar conversación
+    B-->>F: Respuesta del asistente
+    F-->>U: Muestra respuesta IA
+```
+
 ---
 
 ## 🚀 Instalación y Despliegue (Quick Start)
